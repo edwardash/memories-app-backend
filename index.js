@@ -9,15 +9,12 @@ const app = express();
 dotenv.config();
 
 
-
-// const cors=require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
+const corsOptions = {
+    origin: '*',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
 }
 
-app.use(cors(corsOptions)) 
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
