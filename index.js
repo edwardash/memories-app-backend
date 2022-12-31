@@ -9,23 +9,22 @@ const app = express();
 dotenv.config();
 
 
-const corsOptions = {
-    origin: '*',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-}
-
+// app.all('*', (req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "https://localhost:3000");
+//     next();
+// });
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.send('APP IS RUNNING');
 });
 
